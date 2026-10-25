@@ -18,6 +18,14 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/site.css">
+<script>
+  // Hide reveal targets until Motion plays them in; fail open after 2.5s.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("m");
+    setTimeout(() => { if (!window.__motion) document.documentElement.classList.remove("m"); }, 2500);
+  }
+</script>
+
 </head>
 <body class="exhibit">
 <header class="nav">
@@ -28,46 +36,46 @@
 <main>
   <section class="wall">
     <p class="label">Gallery IV</p>
-    <h1>NewBo, in July</h1>
+    <h1 style="view-transition-name: t-newbo-in-july">NewBo, in July</h1>
     <p class="meta">Cedar Rapids, Iowa · 9 July 2026 · 9 photographs</p>
     <div class="walltext"><p>A walk through Cedar Rapids' NewBo district on a gray July day: the city market's long red roof, a painted piano left out for anyone, bike racks bent into the neighborhood's logo.</p><p>Small-town lettering is its own kind of portrait. These are the signs a place puts up when it's telling you who it is.</p></div>
   </section>
   <section class="hang">
     <figure class="plate wide" id="p1" data-n="1">
-      <button class="open" aria-label="View plate IV.01 larger"><img class="" src="/img/cedar/01.jpg" srcset="/img/cedar/01-s.jpg 900w, /img/cedar/01.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="352" alt="NewBo, in July, plate IV.01. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
-      <figcaption><span class="no">IV.01</span><span class="cap">Cedar Rapids, Iowa, 9 July 2026</span><span class="set">35mm · f/4.5 · 1/1250s · ISO 400</span></figcaption>
+      <button class="open" aria-label="View plate IV.01 larger"><img class="" src="/img/cedar/01-m.jpg" srcset="/img/cedar/01-s.jpg 900w, /img/cedar/01-m.jpg 1600w, /img/cedar/01.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="352" alt="NewBo, in July, plate IV.01. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
+      <figcaption><span class="no">IV.01</span><span class="set">35mm · f/4.5 · 1/1250s · ISO 400</span></figcaption>
     </figure>
     <figure class="plate tall" id="p2" data-n="2">
-      <button class="open" aria-label="View plate IV.02 larger"><img class="" src="/img/cedar/02.jpg" srcset="/img/cedar/02-s.jpg 768w, /img/cedar/02.jpg 2048w" sizes="(max-width: 900px) 100vw, 70vw" width="768" height="900" alt="NewBo, in July, plate IV.02. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
-      <figcaption><span class="no">IV.02</span><span class="cap">Cedar Rapids, Iowa, 9 July 2026</span><span class="set">56mm · f/4.5 · 1/1250s · ISO 640</span></figcaption>
+      <button class="open" aria-label="View plate IV.02 larger"><img class="" src="/img/cedar/02-m.jpg" srcset="/img/cedar/02-s.jpg 768w, /img/cedar/02-m.jpg 1365w, /img/cedar/02.jpg 2048w" sizes="(max-width: 900px) 100vw, 70vw" width="768" height="900" alt="NewBo, in July, plate IV.02. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
+      <figcaption><span class="no">IV.02</span><span class="set">56mm · f/4.5 · 1/1250s · ISO 640</span></figcaption>
     </figure>
     <figure class="plate wide" id="p3" data-n="3">
-      <button class="open" aria-label="View plate IV.03 larger"><img class="" src="/img/cedar/03.jpg" srcset="/img/cedar/03-s.jpg 900w, /img/cedar/03.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="567" alt="NewBo, in July, plate IV.03. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
-      <figcaption><span class="no">IV.03</span><span class="cap">Cedar Rapids, Iowa, 9 July 2026</span><span class="set">42mm · f/4 · 1/1250s · ISO 1600</span></figcaption>
+      <button class="open" aria-label="View plate IV.03 larger"><img class="" src="/img/cedar/03-m.jpg" srcset="/img/cedar/03-s.jpg 900w, /img/cedar/03-m.jpg 1600w, /img/cedar/03.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="567" alt="NewBo, in July, plate IV.03. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
+      <figcaption><span class="no">IV.03</span><span class="set">42mm · f/4 · 1/1250s · ISO 1600</span></figcaption>
     </figure>
     <figure class="plate wide" id="p4" data-n="4">
-      <button class="open" aria-label="View plate IV.04 larger"><img class="" src="/img/cedar/04.jpg" srcset="/img/cedar/04-s.jpg 900w, /img/cedar/04.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="527" alt="NewBo, in July, plate IV.04. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
-      <figcaption><span class="no">IV.04</span><span class="cap">Cedar Rapids, Iowa, 9 July 2026</span><span class="set">24mm · f/4.5 · 1/1250s · ISO 500</span></figcaption>
+      <button class="open" aria-label="View plate IV.04 larger"><img class="" src="/img/cedar/04-m.jpg" srcset="/img/cedar/04-s.jpg 900w, /img/cedar/04-m.jpg 1600w, /img/cedar/04.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="527" alt="NewBo, in July, plate IV.04. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
+      <figcaption><span class="no">IV.04</span><span class="set">24mm · f/4.5 · 1/1250s · ISO 500</span></figcaption>
     </figure>
     <figure class="plate wide" id="p5" data-n="5">
-      <button class="open" aria-label="View plate IV.05 larger"><img class="" src="/img/cedar/05.jpg" srcset="/img/cedar/05-s.jpg 900w, /img/cedar/05.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="600" alt="NewBo, in July, plate IV.05. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
-      <figcaption><span class="no">IV.05</span><span class="cap">Cedar Rapids, Iowa, 9 July 2026</span><span class="set">105mm · f/4.5 · 1/1250s · ISO 640</span></figcaption>
+      <button class="open" aria-label="View plate IV.05 larger"><img class="" src="/img/cedar/05-m.jpg" srcset="/img/cedar/05-s.jpg 900w, /img/cedar/05-m.jpg 1600w, /img/cedar/05.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="600" alt="NewBo, in July, plate IV.05. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
+      <figcaption><span class="no">IV.05</span><span class="set">105mm · f/4.5 · 1/1250s · ISO 640</span></figcaption>
     </figure>
     <figure class="plate wide" id="p6" data-n="6">
-      <button class="open" aria-label="View plate IV.06 larger"><img class="" src="/img/cedar/06.jpg" srcset="/img/cedar/06-s.jpg 900w, /img/cedar/06.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="600" alt="NewBo, in July, plate IV.06. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
-      <figcaption><span class="no">IV.06</span><span class="cap">Cedar Rapids, Iowa, 9 July 2026</span><span class="set">105mm · f/4.5 · 1/1250s · ISO 640</span></figcaption>
+      <button class="open" aria-label="View plate IV.06 larger"><img class="" src="/img/cedar/06-m.jpg" srcset="/img/cedar/06-s.jpg 900w, /img/cedar/06-m.jpg 1600w, /img/cedar/06.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="600" alt="NewBo, in July, plate IV.06. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
+      <figcaption><span class="no">IV.06</span><span class="set">105mm · f/4.5 · 1/1250s · ISO 640</span></figcaption>
     </figure>
     <figure class="plate wide" id="p7" data-n="7">
-      <button class="open" aria-label="View plate IV.07 larger"><img class="" src="/img/cedar/07.jpg" srcset="/img/cedar/07-s.jpg 900w, /img/cedar/07.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="600" alt="NewBo, in July, plate IV.07. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
-      <figcaption><span class="no">IV.07</span><span class="cap">Cedar Rapids, Iowa, 9 July 2026</span><span class="set">76mm · f/4.5 · 1/1250s · ISO 320</span></figcaption>
+      <button class="open" aria-label="View plate IV.07 larger"><img class="" src="/img/cedar/07-m.jpg" srcset="/img/cedar/07-s.jpg 900w, /img/cedar/07-m.jpg 1600w, /img/cedar/07.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="600" alt="NewBo, in July, plate IV.07. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
+      <figcaption><span class="no">IV.07</span><span class="set">76mm · f/4.5 · 1/1250s · ISO 320</span></figcaption>
     </figure>
     <figure class="plate wide" id="p8" data-n="8">
-      <button class="open" aria-label="View plate IV.08 larger"><img class="" src="/img/cedar/08.jpg" srcset="/img/cedar/08-s.jpg 900w, /img/cedar/08.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="472" alt="NewBo, in July, plate IV.08. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
-      <figcaption><span class="no">IV.08</span><span class="cap">Cedar Rapids, Iowa, 9 July 2026</span><span class="set">81mm · f/4.5 · 1/1250s · ISO 640</span></figcaption>
+      <button class="open" aria-label="View plate IV.08 larger"><img class="" src="/img/cedar/08-m.jpg" srcset="/img/cedar/08-s.jpg 900w, /img/cedar/08-m.jpg 1600w, /img/cedar/08.jpg 2400w" sizes="(max-width: 900px) 100vw, 70vw" width="900" height="472" alt="NewBo, in July, plate IV.08. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
+      <figcaption><span class="no">IV.08</span><span class="set">81mm · f/4.5 · 1/1250s · ISO 640</span></figcaption>
     </figure>
     <figure class="plate tall" id="p9" data-n="9">
-      <button class="open" aria-label="View plate IV.09 larger"><img class="" src="/img/cedar/09.jpg" srcset="/img/cedar/09-s.jpg 649w, /img/cedar/09.jpg 1731w" sizes="(max-width: 900px) 100vw, 70vw" width="649" height="900" alt="NewBo, in July, plate IV.09. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
-      <figcaption><span class="no">IV.09</span><span class="cap">Cedar Rapids, Iowa, 9 July 2026</span><span class="set">105mm · f/4.5 · 1/1250s · ISO 400</span></figcaption>
+      <button class="open" aria-label="View plate IV.09 larger"><img class="" src="/img/cedar/09-m.jpg" srcset="/img/cedar/09-s.jpg 649w, /img/cedar/09-m.jpg 1154w, /img/cedar/09.jpg 1731w" sizes="(max-width: 900px) 100vw, 70vw" width="649" height="900" alt="NewBo, in July, plate IV.09. Cedar Rapids, Iowa." loading=lazy decoding="async"></button>
+      <figcaption><span class="no">IV.09</span><span class="set">105mm · f/4.5 · 1/1250s · ISO 400</span></figcaption>
     </figure>
   </section>
   <nav class="nextroom">
@@ -81,7 +89,7 @@
   <figure><img alt=""><figcaption></figcaption></figure>
   <button class="lbnext" aria-label="Next photograph">→</button>
 </dialog>
-<script type="application/json" id="plates">[{"src": "/img/cedar/01.jpg", "w": 900, "h": 352, "no": "IV.01", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "35mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 400"}, {"src": "/img/cedar/02.jpg", "w": 768, "h": 900, "no": "IV.02", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "56mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 640"}, {"src": "/img/cedar/03.jpg", "w": 900, "h": 567, "no": "IV.03", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "42mm \u00b7 f/4 \u00b7 1/1250s \u00b7 ISO 1600"}, {"src": "/img/cedar/04.jpg", "w": 900, "h": 527, "no": "IV.04", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "24mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 500"}, {"src": "/img/cedar/05.jpg", "w": 900, "h": 600, "no": "IV.05", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "105mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 640"}, {"src": "/img/cedar/06.jpg", "w": 900, "h": 600, "no": "IV.06", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "105mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 640"}, {"src": "/img/cedar/07.jpg", "w": 900, "h": 600, "no": "IV.07", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "76mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 320"}, {"src": "/img/cedar/08.jpg", "w": 900, "h": 472, "no": "IV.08", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "81mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 640"}, {"src": "/img/cedar/09.jpg", "w": 649, "h": 900, "no": "IV.09", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "105mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 400"}]</script>
+<script type="application/json" id="plates">[{"src": "/img/cedar/01-m.jpg", "srcset": "/img/cedar/01-s.jpg 900w, /img/cedar/01-m.jpg 1600w, /img/cedar/01.jpg 2400w", "w": 900, "h": 352, "no": "IV.01", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "35mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 400"}, {"src": "/img/cedar/02-m.jpg", "srcset": "/img/cedar/02-s.jpg 768w, /img/cedar/02-m.jpg 1365w, /img/cedar/02.jpg 2048w", "w": 768, "h": 900, "no": "IV.02", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "56mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 640"}, {"src": "/img/cedar/03-m.jpg", "srcset": "/img/cedar/03-s.jpg 900w, /img/cedar/03-m.jpg 1600w, /img/cedar/03.jpg 2400w", "w": 900, "h": 567, "no": "IV.03", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "42mm \u00b7 f/4 \u00b7 1/1250s \u00b7 ISO 1600"}, {"src": "/img/cedar/04-m.jpg", "srcset": "/img/cedar/04-s.jpg 900w, /img/cedar/04-m.jpg 1600w, /img/cedar/04.jpg 2400w", "w": 900, "h": 527, "no": "IV.04", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "24mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 500"}, {"src": "/img/cedar/05-m.jpg", "srcset": "/img/cedar/05-s.jpg 900w, /img/cedar/05-m.jpg 1600w, /img/cedar/05.jpg 2400w", "w": 900, "h": 600, "no": "IV.05", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "105mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 640"}, {"src": "/img/cedar/06-m.jpg", "srcset": "/img/cedar/06-s.jpg 900w, /img/cedar/06-m.jpg 1600w, /img/cedar/06.jpg 2400w", "w": 900, "h": 600, "no": "IV.06", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "105mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 640"}, {"src": "/img/cedar/07-m.jpg", "srcset": "/img/cedar/07-s.jpg 900w, /img/cedar/07-m.jpg 1600w, /img/cedar/07.jpg 2400w", "w": 900, "h": 600, "no": "IV.07", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "76mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 320"}, {"src": "/img/cedar/08-m.jpg", "srcset": "/img/cedar/08-s.jpg 900w, /img/cedar/08-m.jpg 1600w, /img/cedar/08.jpg 2400w", "w": 900, "h": 472, "no": "IV.08", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "81mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 640"}, {"src": "/img/cedar/09-m.jpg", "srcset": "/img/cedar/09-s.jpg 649w, /img/cedar/09-m.jpg 1154w, /img/cedar/09.jpg 1731w", "w": 649, "h": 900, "no": "IV.09", "cap": "Cedar Rapids, Iowa, 9 July 2026", "set": "105mm \u00b7 f/4.5 \u00b7 1/1250s \u00b7 ISO 400"}]</script>
 <footer class="foot">
   <div class="footin">
     <p class="mark">Burke Ruder <span>Photographs</span></p>
@@ -89,6 +97,7 @@
     <p><a href="https://burkeruder.ai">burkeruder.ai</a> — the other things I make</p>
   </div>
 </footer>
+<script src="/vendor/motion-14.1.0.js" defer></script>
 <script src="/site.js" defer></script>
 </body>
 </html>

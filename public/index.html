@@ -18,6 +18,14 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/site.css">
+<script>
+  // Hide reveal targets until Motion plays them in; fail open after 2.5s.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("m");
+    setTimeout(() => { if (!window.__motion) document.documentElement.classList.remove("m"); }, 2500);
+  }
+</script>
+<link rel="preload" as="image" href="/img/austin/01-m.jpg" imagesrcset="/img/austin/01-s.jpg 873w, /img/austin/01-m.jpg 1552w, /img/austin/01.jpg 2328w" imagesizes="100vw" fetchpriority="high">
 </head>
 <body class="home">
 <header class="nav">
@@ -26,7 +34,7 @@
 </header>
 
 <section class="hero">
-  <img class="heroimg" src="/img/austin/01.jpg" srcset="/img/austin/01-s.jpg 873w, /img/austin/01.jpg 2328w" sizes="100vw" width="873" height="900" alt="The Texas Capitol at the end of Congress Avenue, framed by live oaks" fetchpriority=high decoding="async">
+  <div class="heroframe"><img class="heroimg" src="/img/austin/01-m.jpg" srcset="/img/austin/01-s.jpg 873w, /img/austin/01-m.jpg 1552w, /img/austin/01.jpg 2328w" sizes="100vw" width="873" height="900" alt="The Texas Capitol at the end of Congress Avenue, framed by live oaks" fetchpriority=high decoding="async"></div>
   <div class="vignette"></div><div class="grain"></div>
   <div class="herotext">
     <h1>Burke Ruder</h1>
@@ -48,46 +56,47 @@
   </div>
   
     <a class="room" href="/exhibitions/the-quiet-city/">
-      <figure class="roomimg"><img class="" src="/img/austin/12.jpg" srcset="/img/austin/12-s.jpg 900w, /img/austin/12.jpg 2400w" sizes="(max-width: 900px) 100vw, 60vw" width="900" height="600" alt="The Quiet City" loading=lazy decoding="async"></figure>
+      <figure class="roomimg"><img class="" src="/img/austin/12-m.jpg" srcset="/img/austin/12-s.jpg 900w, /img/austin/12-m.jpg 1600w, /img/austin/12.jpg 2400w" sizes="(max-width: 900px) 100vw, 60vw" width="900" height="600" alt="The Quiet City" loading=lazy decoding="async"></figure>
       <div class="roomtext">
         <p class="label">Gallery I</p>
-        <h3>The Quiet City</h3>
+        <h3 style="view-transition-name: t-the-quiet-city">The Quiet City</h3>
         <p class="dek">Storefronts, sidewalks and the Capitol, with the volume turned down.</p>
         <p class="meta">Downtown Austin, Texas<br>13 May 2026 · 22 photographs</p>
         <span class="enter">Enter the gallery <span aria-hidden="true">→</span></span>
       </div>
     </a>
     <a class="room" href="/exhibitions/first-light/">
-      <figure class="roomimg"><img class="" src="/img/conroe/02.jpg" srcset="/img/conroe/02-s.jpg 600w, /img/conroe/02.jpg 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="600" height="900" alt="First Light" loading=lazy decoding="async"></figure>
+      <figure class="roomimg"><img class="" src="/img/conroe/02-m.jpg" srcset="/img/conroe/02-s.jpg 600w, /img/conroe/02-m.jpg 1067w, /img/conroe/02.jpg 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="600" height="900" alt="First Light" loading=lazy decoding="async"></figure>
       <div class="roomtext">
         <p class="label">Gallery II</p>
-        <h3>First Light</h3>
+        <h3 style="view-transition-name: t-first-light">First Light</h3>
         <p class="dek">A morning on the water, from the dark marina to a full table.</p>
         <p class="meta">Lake Conroe, Texas<br>11 October 2026 · 25 photographs</p>
         <span class="enter">Enter the gallery <span aria-hidden="true">→</span></span>
       </div>
     </a>
     <a class="room" href="/exhibitions/faire-folk/">
-      <figure class="roomimg"><img class="" src="/img/faire/03.jpg" srcset="/img/faire/03-s.jpg 900w, /img/faire/03.jpg 2400w" sizes="(max-width: 900px) 100vw, 60vw" width="900" height="600" alt="Faire Folk" loading=lazy decoding="async"></figure>
+      <figure class="roomimg"><img class="" src="/img/faire/03-m.jpg" srcset="/img/faire/03-s.jpg 900w, /img/faire/03-m.jpg 1600w, /img/faire/03.jpg 2400w" sizes="(max-width: 900px) 100vw, 60vw" width="900" height="600" alt="Faire Folk" loading=lazy decoding="async"></figure>
       <div class="roomtext">
         <p class="label">Gallery III</p>
-        <h3>Faire Folk</h3>
+        <h3 style="view-transition-name: t-faire-folk">Faire Folk</h3>
         <p class="dek">Everyone decided to be someone else for an afternoon.</p>
         <p class="meta">Texas Renaissance Festival, Todd Mission<br>10 October 2026 · 20 photographs</p>
         <span class="enter">Enter the gallery <span aria-hidden="true">→</span></span>
       </div>
     </a>
     <a class="room" href="/exhibitions/newbo-in-july/">
-      <figure class="roomimg"><img class="" src="/img/cedar/01.jpg" srcset="/img/cedar/01-s.jpg 900w, /img/cedar/01.jpg 2400w" sizes="(max-width: 900px) 100vw, 60vw" width="900" height="352" alt="NewBo, in July" loading=lazy decoding="async"></figure>
+      <figure class="roomimg"><img class="" src="/img/cedar/01-m.jpg" srcset="/img/cedar/01-s.jpg 900w, /img/cedar/01-m.jpg 1600w, /img/cedar/01.jpg 2400w" sizes="(max-width: 900px) 100vw, 60vw" width="900" height="352" alt="NewBo, in July" loading=lazy decoding="async"></figure>
       <div class="roomtext">
         <p class="label">Gallery IV</p>
-        <h3>NewBo, in July</h3>
+        <h3 style="view-transition-name: t-newbo-in-july">NewBo, in July</h3>
         <p class="dek">Signage and small details from a summer walk.</p>
         <p class="meta">Cedar Rapids, Iowa<br>9 July 2026 · 9 photographs</p>
         <span class="enter">Enter the gallery <span aria-hidden="true">→</span></span>
       </div>
     </a>
 </section>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://burkeruder.com/#burke", "name": "Burke Ruder", "jobTitle": "Photographer", "address": {"@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US"}, "url": "https://burkeruder.com", "sameAs": ["https://burkeruder.ai"]}, {"@type": "WebSite", "name": "Burke Ruder Photographs", "url": "https://burkeruder.com", "author": {"@id": "https://burkeruder.com/#burke"}}, {"@type": "ImageGallery", "name": "The Quiet City", "url": "https://burkeruder.com/exhibitions/the-quiet-city/", "description": "Storefronts, sidewalks and the Capitol, with the volume turned down.", "contentLocation": "Downtown Austin, Texas", "author": {"@id": "https://burkeruder.com/#burke"}, "image": "https://burkeruder.com/img/austin/12.jpg"}, {"@type": "ImageGallery", "name": "First Light", "url": "https://burkeruder.com/exhibitions/first-light/", "description": "A morning on the water, from the dark marina to a full table.", "contentLocation": "Lake Conroe, Texas", "author": {"@id": "https://burkeruder.com/#burke"}, "image": "https://burkeruder.com/img/conroe/02.jpg"}, {"@type": "ImageGallery", "name": "Faire Folk", "url": "https://burkeruder.com/exhibitions/faire-folk/", "description": "Everyone decided to be someone else for an afternoon.", "contentLocation": "Texas Renaissance Festival, Todd Mission", "author": {"@id": "https://burkeruder.com/#burke"}, "image": "https://burkeruder.com/img/faire/03.jpg"}, {"@type": "ImageGallery", "name": "NewBo, in July", "url": "https://burkeruder.com/exhibitions/newbo-in-july/", "description": "Signage and small details from a summer walk.", "contentLocation": "Cedar Rapids, Iowa", "author": {"@id": "https://burkeruder.com/#burke"}, "image": "https://burkeruder.com/img/cedar/01.jpg"}]}</script>
 <footer class="foot">
   <div class="footin">
     <p class="mark">Burke Ruder <span>Photographs</span></p>
@@ -95,6 +104,7 @@
     <p><a href="https://burkeruder.ai">burkeruder.ai</a> — the other things I make</p>
   </div>
 </footer>
+<script src="/vendor/motion-14.1.0.js" defer></script>
 <script src="/site.js" defer></script>
 </body>
 </html>

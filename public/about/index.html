@@ -18,6 +18,14 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/site.css">
+<script>
+  // Hide reveal targets until Motion plays them in; fail open after 2.5s.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("m");
+    setTimeout(() => { if (!window.__motion) document.documentElement.classList.remove("m"); }, 2500);
+  }
+</script>
+
 </head>
 <body class="">
 <header class="nav">
@@ -31,7 +39,7 @@
     <h1>The photographer</h1>
   </header>
   <div class="aboutgrid">
-    <figure><img class="" src="/img/conroe/01.jpg" srcset="/img/conroe/01-s.jpg 900w, /img/conroe/01.jpg 2400w" sizes="(max-width: 900px) 100vw, 40vw" width="900" height="600" alt="Boat slips on Lake Conroe at sunrise" loading=lazy decoding="async"></figure>
+    <figure><img class="" src="/img/conroe/01-m.jpg" srcset="/img/conroe/01-s.jpg 900w, /img/conroe/01-m.jpg 1600w, /img/conroe/01.jpg 2400w" sizes="(max-width: 900px) 100vw, 40vw" width="900" height="600" alt="Boat slips on Lake Conroe at sunrise" loading=lazy decoding="async"></figure>
     <div class="abouttext">
       <p>Burke Ruder lives in Austin, Texas, with his wife and three kids. He shoots on a Canon EOS R6 Mark II.</p><p>Most weekends the camera goes where the family goes — ballfields, lakes, festivals. The street work in <em>The Quiet City</em> is where he found a look he could call his own: matte, cool, patient.</p><p>Every photograph here is edited by him in Lightroom.</p>
       <div class="elsewhere">
@@ -48,6 +56,7 @@
     <p><a href="https://burkeruder.ai">burkeruder.ai</a> — the other things I make</p>
   </div>
 </footer>
+<script src="/vendor/motion-14.1.0.js" defer></script>
 <script src="/site.js" defer></script>
 </body>
 </html>

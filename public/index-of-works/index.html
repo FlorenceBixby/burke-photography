@@ -18,6 +18,14 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/site.css">
+<script>
+  // Hide reveal targets until Motion plays them in; fail open after 2.5s.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("m");
+    setTimeout(() => { if (!window.__motion) document.documentElement.classList.remove("m"); }, 2500);
+  }
+</script>
+
 </head>
 <body class="">
 <header class="nav">
@@ -55,6 +63,7 @@
     <p><a href="https://burkeruder.ai">burkeruder.ai</a> — the other things I make</p>
   </div>
 </footer>
+<script src="/vendor/motion-14.1.0.js" defer></script>
 <script src="/site.js" defer></script>
 </body>
 </html>

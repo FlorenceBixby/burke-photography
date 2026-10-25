@@ -99,8 +99,9 @@ def img_tag(p, alt, cls="", eager=False, sizes="(max-width: 900px) 100vw, 80vw")
     # photos.json holds the small rendition's size (long edge 900); the
     # large one has a 2400 long edge, so scale the width to match.
     big_w = round(p["w"] * 2400 / max(p["w"], p["h"]))
+    mid_w = round(p["w"] * 1600 / max(p["w"], p["h"]))
     return (
-        f'<img class="{cls}" src="{p["file"]}.jpg" srcset="{p["file"]}-s.jpg {p["w"]}w, {p["file"]}.jpg {big_w}w" '
+        f'<img class="{cls}" src="{p["file"]}-m.jpg" srcset="{p["file"]}-s.jpg {p["w"]}w, {p["file"]}-m.jpg {mid_w}w, {p["file"]}.jpg {big_w}w" '
         f'sizes="{sizes}" width="{p["w"]}" height="{p["h"]}" alt="{esc(alt)}" '
         f'{"fetchpriority=high" if eager else "loading=lazy"} decoding="async">'
     )
@@ -110,7 +111,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="
          '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">')
 
 
-def page(path, title, desc, body, og_image, cls=""):
+def page(path, title, desc, body, og_image, cls="", preload=""):
     canon = SITE + path
     robots = '<meta name="robots" content="noindex, nofollow">' if PREVIEW else '<meta name="robots" content="index, follow">'
     return f"""<!doctype html>
@@ -133,11 +134,20 @@ def page(path, title, desc, body, og_image, cls=""):
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {FONTS}
 <link rel="stylesheet" href="/site.css">
+<script>
+  // Hide reveal targets until Motion plays them in; fail open after 2.5s.
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {{
+    document.documentElement.classList.add("m");
+    setTimeout(() => {{ if (!window.__motion) document.documentElement.classList.remove("m"); }}, 2500);
+  }}
+</script>
+{preload}
 </head>
 <body class="{cls}">
 {nav(path)}
 {body}
 {footer()}
+<script src="/vendor/motion-14.1.0.js" defer></script>
 <script src="/site.js" defer></script>
 </body>
 </html>
@@ -184,7 +194,7 @@ def landing():
       <figure class="roomimg">{img_tag(c, r['title'], sizes="(max-width: 900px) 100vw, 60vw")}</figure>
       <div class="roomtext">
         <p class="label">Gallery {r['numeral']}</p>
-        <h3>{esc(r['title'])}</h3>
+        <h3 style="view-transition-name: t-{r['slug']}">{esc(r['title'])}</h3>
         <p class="dek">{esc(r['dek'])}</p>
         <p class="meta">{esc(r['place'])}<br>{esc(month_year(ps))} · {len(ps)} photographs</p>
         <span class="enter">Enter the gallery <span aria-hidden="true">→</span></span>
@@ -193,7 +203,7 @@ def landing():
     total = sum(len(room_photos(r)) for r in ROOMS)
     body = f"""
 <section class="hero">
-  {img_tag(hero, "The Texas Capitol at the end of Congress Avenue, framed by live oaks", "heroimg", eager=True, sizes="100vw")}
+  <div class="heroframe">{img_tag(hero, "The Texas Capitol at the end of Congress Avenue, framed by live oaks", "heroimg", eager=True, sizes="100vw")}</div>
   <div class="vignette"></div><div class="grain"></div>
   <div class="herotext">
     <h1>Burke Ruder</h1>
@@ -215,9 +225,19 @@ def landing():
   </div>
   {''.join(rooms)}
 </section>"""
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "Person", "@id": SITE + "/#burke", "name": "Burke Ruder", "jobTitle": "Photographer",
+         "address": {"@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "addressCountry": "US"},
+         "url": SITE, "sameAs": ["https://burkeruder.ai"]},
+        {"@type": "WebSite", "name": "Burke Ruder Photographs", "url": SITE, "author": {"@id": SITE + "/#burke"}},
+    ] + [{"@type": "ImageGallery", "name": r["title"], "url": f"{SITE}/exhibitions/{r['slug']}/",
+          "description": r["dek"], "contentLocation": r["place"], "author": {"@id": SITE + "/#burke"},
+          "image": f"{SITE}{room_photos(r)[r['cover']]['file']}.jpg"} for r in ROOMS]}
+    body += f'\n<script type="application/ld+json">{json.dumps(ld)}</script>'
     return page("/", "Burke Ruder — Photographs",
                 "The photography of Burke Ruder: street work from downtown Austin, mornings on Lake Conroe, portraits from the Texas Renaissance Festival, and more.",
-                body, hero["file"], "home")
+                body, hero["file"], "home",
+                preload=f'<link rel="preload" as="image" href="{hero["file"]}-m.jpg" imagesrcset="{hero["file"]}-s.jpg {hero["w"]}w, {hero["file"]}-m.jpg {round(hero["w"]*1600/max(hero["w"],hero["h"]))}w, {hero["file"]}.jpg {round(hero["w"]*2400/max(hero["w"],hero["h"]))}w" imagesizes="100vw" fetchpriority="high">')
 
 
 # ---------- exhibitions index ----------
@@ -229,7 +249,7 @@ def exhibitions():
   <a class="exitem" href="/exhibitions/{r['slug']}/">
     <figure>{img_tag(ps[r['cover']], r['title'], sizes="(max-width: 900px) 100vw, 45vw")}</figure>
     <p class="label">Gallery {r['numeral']} · {len(ps)} photographs</p>
-    <h3>{esc(r['title'])}</h3>
+    <h3 style="view-transition-name: t-{r['slug']}">{esc(r['title'])}</h3>
     <p class="meta">{esc(r['place'])} · {esc(month_year(ps))}</p>
   </a>""")
     body = f"""
@@ -254,7 +274,7 @@ def hang(r):
         alt = f"{r['title']}, plate {plate_label(r, n)}. {r['place']}."
         return f"""<figure class="plate {cls}" id="p{n}" data-n="{n}">
       <button class="open" aria-label="View plate {plate_label(r, n)} larger">{img_tag(p, alt, sizes='(max-width: 900px) 100vw, 70vw')}</button>
-      <figcaption><span class="no">{plate_label(r, n)}</span><span class="cap">{esc(r['place'])}{', ' + esc(nice_date(p.get('date'))) if p.get('date') else ''}</span><span class="set">{esc(settings(p))}</span></figcaption>
+      <figcaption><span class="no">{plate_label(r, n)}</span><span class="set">{esc(settings(p))}</span></figcaption>
     </figure>"""
     while i < len(ps):
         p = ps[i]
@@ -273,14 +293,17 @@ def gallery(idx):
     r = ROOMS[idx]
     ps = room_photos(r)
     nxt = ROOMS[(idx + 1) % len(ROOMS)]
-    lb = json.dumps([{"src": p["file"] + ".jpg", "w": p["w"], "h": p["h"], "no": plate_label(r, n),
+    def srcset(p):
+        k = max(p["w"], p["h"])
+        return f'{p["file"]}-s.jpg {p["w"]}w, {p["file"]}-m.jpg {round(p["w"] * 1600 / k)}w, {p["file"]}.jpg {round(p["w"] * 2400 / k)}w'
+    lb = json.dumps([{"src": p["file"] + "-m.jpg", "srcset": srcset(p), "w": p["w"], "h": p["h"], "no": plate_label(r, n),
                       "cap": r["place"] + (", " + nice_date(p.get("date")) if p.get("date") else ""),
                       "set": settings(p)} for n, p in enumerate(ps, 1)])
     body = f"""
 <main>
   <section class="wall">
     <p class="label">Gallery {r['numeral']}</p>
-    <h1>{esc(r['title'])}</h1>
+    <h1 style="view-transition-name: t-{r['slug']}">{esc(r['title'])}</h1>
     <p class="meta">{esc(r['place'])} · {esc(month_year(ps))} · {len(ps)} photographs</p>
     <div class="walltext">{''.join(f'<p>{p}</p>' for p in r['wall'])}</div>
   </section>
