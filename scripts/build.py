@@ -9,7 +9,7 @@ workers.dev. Flip to False when burkeruder.com points here.
 import json, os, html
 from datetime import date
 
-PREVIEW = True
+PREVIEW = False
 SITE = "https://burkeruder.com"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PUB = os.path.join(ROOT, "public")
@@ -131,7 +131,9 @@ def page(path, title, desc, body, og_image, cls="", preload=""):
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{SITE}{og_image}.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 {FONTS}
 <link rel="stylesheet" href="/site.css">
 <script>

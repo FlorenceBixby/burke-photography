@@ -1,7 +1,15 @@
 name = "burke-photography"
+main = "src.js"
 compatibility_date = "2026-10-01"
+
+routes = [
+  { pattern = "burkeruder.com", custom_domain = true },
+  { pattern = "www.burkeruder.com", custom_domain = true }
+]
 
 [assets]
 directory = "./public"
+binding = "ASSETS"
 html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
+run_worker_first = true
