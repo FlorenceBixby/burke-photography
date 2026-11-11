@@ -378,6 +378,37 @@ def about():
                 "Burke Ruder is a photographer in Austin, Texas.", body, photos["austin"][0]["file"])
 
 
+# ---------- privacy (Google OAuth requirement, 2026-11-11) ----------
+# Burke's "Family Calendar Sync" Google app (pulls event dates from his own
+# Gmail into his calendar) needs a public privacy policy on a domain he owns to
+# leave Testing mode. Not linked from the nav or sitemap.
+PRIVACY = [
+    ("Who this covers", "This policy covers <em>Family Calendar Sync</em>, a private tool Burke Ruder built for his own household. It is not offered to the public; the only accounts connected to it are Burke's own Google accounts."),
+    ("What it accesses", "With the account owner's consent, it reads recent messages in the connected Gmail inboxes and reads and writes events on the owner's Google Calendar."),
+    ("How data is used", "Message text is used for one purpose: finding real-world dates (school events, appointments, deadlines) and adding them to the owner's calendar, sometimes with the owner's other email address invited as a guest. It never sends, deletes, archives, labels or moves email."),
+    ("Processing", "To find those dates, the text of each message is sent to Anthropic's Claude API, which does not train models on API data, through Cloudflare's AI Gateway, which may keep request logs for a limited time for monitoring. The tool itself keeps only short run logs (sender, subject, event titles) for troubleshooting."),
+    ("Sharing", "Data is never sold, shared with advertisers, or used for any purpose other than the one above."),
+    ("Google API data", "Family Calendar Sync's use and transfer of information received from Google APIs adheres to the <a href=\"https://developers.google.com/terms/api-services-user-data-policy\">Google API Services User Data Policy</a>, including the Limited Use requirements."),
+    ("Revoking access", "Access can be removed at any time from the Google Account's <a href=\"https://myaccount.google.com/permissions\">third-party connections</a> page. Questions go to the support contact shown on the Google consent screen."),
+]
+
+
+def privacy():
+    body = f"""
+<main class="wrap about">
+  <header class="pagehead">
+    <p class="label">Privacy</p>
+    <h1>Family Calendar Sync</h1>
+  </header>
+  <div class="abouttext">
+    {''.join(f'<h2 class="label">{h}</h2><p>{t}</p>' for h, t in PRIVACY)}
+    <p class="label">Updated 11 November 2026</p>
+  </div>
+</main>"""
+    return page("/privacy/", "Privacy — Family Calendar Sync",
+                "Privacy policy for Family Calendar Sync, Burke Ruder's household calendar tool.", body, photos["austin"][0]["file"])
+
+
 def write(path, s):
     full = os.path.join(PUB, path.lstrip("/"), "index.html") if path.endswith("/") else os.path.join(PUB, path.lstrip("/"))
     os.makedirs(os.path.dirname(full), exist_ok=True)
@@ -390,6 +421,7 @@ for i, r in enumerate(ROOMS):
     write(f"/exhibitions/{r['slug']}/", gallery(i))
 write("/index-of-works/", index_of_works())
 write("/about/", about())
+write("/privacy/", privacy())
 
 urls = ["/", "/exhibitions/", "/index-of-works/", "/about/"] + [f"/exhibitions/{r['slug']}/" for r in ROOMS]
 write("/sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
